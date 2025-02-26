@@ -1,3 +1,5 @@
+<div dir="rtl">
+
 # دليل أسلوب Uber للغة Go
 
 - [المقدمة](#المقدمة)
@@ -110,7 +112,7 @@ https://go.dev/wiki/IDEsAndTextEditorPlugins
 - الأنواع المصدرة أو غير المصدرة التي هي جزء من مجموعة من الأنواع التي تنفذ نفس الواجهة
 - حالات أخرى حيث انتهاك واجهة قد يضر بالمستخدمين
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -247,7 +249,7 @@ Effective Go لديها شرح جيد حول [المؤشرات مقابل الق
 
 القيمة الصفرية لـ `sync.Mutex` و `sync.RWMutex` صالحة، لذلك نادرًا ما تحتاج إلى مؤشر إلى mutex.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -269,7 +271,7 @@ mu.Lock()
 
 إذا كنت تستخدم هيكلًا بواسطة مؤشر، فيجب أن يكون mutex حقلًا غير مؤشر عليه. لا تقم بتضمين mutex في الهيكل، حتى لو كان الهيكل غير مصدر.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -339,7 +341,7 @@ func (m *SMap) Get(k string) string {
 
 ضع في اعتبارك أن المستخدمين يمكنهم تعديل خريطة أو شريحة استلمتها كوسيطة إذا قمت بتخزين مرجع لها.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th> <th>جيد</th></tr></thead>
 <tbody>
 <tr>
@@ -383,7 +385,7 @@ trips[0] = ...
 
 وبالمثل، كن حذرًا من تعديلات المستخدمين للخرائط أو الشرائح التي تكشف عن الحالة الداخلية.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -437,7 +439,7 @@ snapshot := stats.Snapshot()
 
 استخدم defer لتنظيف الموارد مثل الملفات والأقفال.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -483,7 +485,7 @@ return p.count
 
 يجب أن يكون للقنوات عادةً حجم واحد أو أن تكون غير مخزنة مؤقتًا. بشكل افتراضي، تكون القنوات غير مخزنة مؤقتًا وحجمها صفر. يجب أن يخضع أي حجم آخر لمستوى عالٍ من التدقيق. فكر في كيفية تحديد الحجم، وما الذي يمنع القناة من الامتلاء تحت الحمل وحظر الكتّاب، وماذا يحدث عندما يحدث هذا.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -509,7 +511,7 @@ c := make(chan int)
 
 الطريقة القياسية لتقديم التعدادات في Go هي إعلان نوع مخصص ومجموعة `const` مع `iota`. بما أن المتغيرات لها قيمة افتراضية 0، فيجب عليك عادةً أن تبدأ التعدادات الخاصة بك بقيمة غير صفرية.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -577,7 +579,7 @@ const (
 
 استخدم [`time.Time`](https://pkg.go.dev/time#Time) عند التعامل مع لحظات زمنية، واستخدم الدوال الموجودة في `time.Time` عند المقارنة أو الإضافة أو الطرح للوقت.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -603,7 +605,7 @@ func isActive(now, start, stop time.Time) bool {
 
 استخدم [`time.Duration`](https://pkg.go.dev/time#Duration) عند التعامل مع فترات زمنية.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -655,7 +657,7 @@ maybeNewDay := t.Add(24 * time.Hour)
 
 على سبيل المثال، نظرًا لأن `encoding/json` لا يدعم `time.Duration`، يتم تضمين الوحدة في اسم الحقل.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -711,7 +713,7 @@ type Config struct {
 قم بتصدير هذا الخطأ كمتغير لدعم مطابقته مع `errors.Is`
 إذا كان المستدعي بحاجة إلى مطابقة ومعالجة هذا الخطأ.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>بدون مطابقة الخطأ</th><th>مع مطابقة الخطأ</th></tr></thead>
 <tbody>
 <tr><td>
@@ -760,7 +762,7 @@ if err := foo.Open(); err != nil {
 استخدم [`fmt.Errorf`](https://pkg.go.dev/fmt#Errorf) إذا لم يكن المستدعي بحاجة إلى مطابقته،
 ونوع `error` مخصص إذا كان المستدعي بحاجة إلى مطابقته.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>بدون مطابقة الخطأ</th><th>مع مطابقة الخطأ</th></tr></thead>
 <tbody>
 <tr><td>
@@ -851,7 +853,7 @@ if err := foo.Open("testfile.txt"); err != nil {
 عبارات مثل "فشل في"، والتي تذكر الواضح وتتراكم مع تصاعد الخطأ
 عبر المكدس:
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -971,7 +973,7 @@ func (e *resolveError) Error() string {
 
 على سبيل المثال، انظر في الحالات التالية:
 
-<table>
+<table dir="rtl">
 <thead><tr><th>الوصف</th><th>الكود</th></tr></thead>
 <tbody>
 <tr><td>
@@ -1063,7 +1065,7 @@ if err != nil {
 
 الشكل ذو القيمة المرتجعة الواحدة لـ [تأكيد النوع](https://go.dev/ref/spec#Type_assertions) سيتسبب في حدوث panic عند استخدام نوع غير صحيح. لذلك، استخدم دائمًا تعبير "الفاصلة ok".
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -1093,7 +1095,7 @@ fine. -->
 [الأعطال المتتالية](https://en.wikipedia.org/wiki/Cascading_failure). إذا حدث خطأ، يجب أن ترجع الدالة خطأً
 وتدع المستدعي يقرر كيفية التعامل معه.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -1145,7 +1147,7 @@ var _statusTemplate = template.Must(template.New("name").Parse("_statusHTML"))
 حتى في الاختبارات، فضّل استخدام `t.Fatal` أو `t.FailNow` على panics للتأكد من أن
 الاختبار معلّم على أنه فشل.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -1182,7 +1184,7 @@ if err != nil {
 [go.uber.org/atomic](https://pkg.go.dev/go.uber.org/atomic) يضيف أمان النوع إلى هذه العمليات من خلال إخفاء
 النوع الأساسي. بالإضافة إلى ذلك، فإنه يتضمن نوع `atomic.Bool` المناسب.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -1233,7 +1235,7 @@ func (f *foo) isRunning() bool {
 تجنب تغيير المتغيرات العالمية، واختر بدلاً من ذلك حقن التبعية.
 ينطبق هذا على مؤشرات الدوال وكذلك على أنواع أخرى من القيم.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -1330,7 +1332,7 @@ func (l *AbstractList) Remove(e Entity) {
 }
 ```
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -1381,7 +1383,7 @@ Go يسمح بـ [تضمين النوع](https://go.dev/doc/effective_go#embeddi
 من شأنه أن يوفر للمطور مرونة أكبر للتغيير في المستقبل، ولكنه لا يزال
 يسرب التفاصيل أن القوائم الملموسة تستخدم تنفيذًا مجردًا.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -1446,7 +1448,7 @@ func (l *ConcreteList) Remove(e Entity) {
 الكود المتأثر مربكًا. في أفضل الحالات، سيشتكي المُصرِّف؛ في
 أسوأ الحالات، قد يُدخل مثل هذا الكود أخطاء كامنة يصعب تتبعها.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -1545,7 +1547,7 @@ func (f Foo) String() string {
 كتابته كجزء من `main()` نفسها. على وجه الخصوص، يجب أن تأخذ المكتبات المخصصة
 للاستخدام من قبل برامج أخرى عناية خاصة لتكون حتمية تماماً ولا تقوم بـ "سحر init".
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -1646,7 +1648,7 @@ func loadConfig() Config {
 قم باستدعاء واحدة من `os.Exit` أو `log.Fatal*` **فقط في `main()`**. يجب أن تعيد جميع الدوال
 الأخرى أخطاء للإشارة إلى الفشل.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -1721,7 +1723,7 @@ func readFile(path string) (string, error) {
 هذا له تأثير تقصير دالة `main()` الخاصة بك ووضع كل منطق العمل الرئيسي في دالة
 منفصلة قابلة للاختبار.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -1836,7 +1838,7 @@ func run() (exitCode int) {
 أو تنسيقات أخرى تدعم تسمية الحقول المستندة إلى العلامات
 يجب أن يتم التعليق عليه بالعلامة ذات الصلة.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -1903,7 +1905,7 @@ Goroutines خفيفة، لكنها ليست مجانية:
 
 على سبيل المثال:
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -2006,7 +2008,7 @@ goroutine.
 يجب أن يوفر الكائن طريقة (`Close`، `Stop`، `Shutdown`، إلخ)
 التي تشير إلى goroutine الخلفية للتوقف، وتنتظر حتى تخرج.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -2082,7 +2084,7 @@ func (w *Worker) Shutdown() {
 عند تحويل الأنواع الأولية من/إلى سلاسل، `strconv` أسرع من
 `fmt`.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -2122,7 +2124,7 @@ BenchmarkStrconv-4    64.2 ns/op    1 allocs/op
 لا تقم بإنشاء شرائح بايت من سلسلة ثابتة بشكل متكرر. بدلاً من ذلك، قم بالتحويل
 مرة واحدة واحتفظ بالنتيجة.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -2182,7 +2184,7 @@ make(map[T1]T2, hint)
 المطلوبة. وبالتالي، قد تحدث تخصيصات عند إضافة عناصر إلى
 الخريطة، حتى السعة المحددة.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -2237,7 +2239,7 @@ make([]T, length, capacity)
 الشريحة مع السعة، وبعد ذلك ستتطلب أي عمليات إلحاق إعادة تحجيم
 لاحتواء عناصر إضافية).
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -2314,7 +2316,7 @@ BenchmarkGood-4   100000000    0.21s
 
 تدعم Go تجميع التصريحات المماثلة.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -2338,7 +2340,7 @@ import (
 
 وهذا ينطبق أيضًا على الثوابت والمتغيرات وإعلانات النوع.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -2383,7 +2385,7 @@ type (
 
 قم بتجميع التصريحات ذات الصلة فقط. لا تجمع التصريحات التي ليست ذات صلة.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -2419,7 +2421,7 @@ const EnvVar = "MY_ENV"
 المجموعات غير محدودة في المكان الذي يمكن استخدامها فيه. على سبيل المثال، يمكنك استخدامها
 داخل الدوال.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -2455,7 +2457,7 @@ func f() string {
 معًا إذا تم إعلانها بجوار متغيرات أخرى. افعل هذا للمتغيرات
 المعلنة معًا حتى لو كانت غير مرتبطة.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -2498,7 +2500,7 @@ func (c *client) request() {
 
 هذا هو التجميع الذي يطبقه goimports بشكل افتراضي.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -2560,7 +2562,7 @@ import (
 
 في جميع السيناريوهات الأخرى، يجب تجنب الأسماء المستعارة للاستيراد ما لم يكن هناك تعارض مباشر بين الاستيرادات.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -2601,7 +2603,7 @@ import (
 
 بما أن الدوال مجمعة حسب المستقبل، فإن الدوال المساعدة البسيطة يجب أن تظهر نحو نهاية الملف.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -2647,7 +2649,7 @@ func calcCost(n []int) int {...}
 
 يجب أن يقلل الكود من التداخل حيثما أمكن عن طريق معالجة حالات الخطأ/الحالات الخاصة أولاً والعودة مبكرًا أو مواصلة الحلقة. قلل من كمية الكود المتداخل على مستويات متعددة.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -2691,7 +2693,7 @@ for _, v := range data {
 
 إذا تم تعيين متغير في كلا فرعي عبارة if، يمكن استبداله بعبارة if واحدة.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -2721,7 +2723,7 @@ if b {
 
 في المستوى الأعلى، استخدم الكلمة المفتاحية القياسية `var`. لا تحدد النوع، إلا إذا كان ليس نفس نوع التعبير.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -2764,7 +2766,7 @@ var _e error = F()
 
 المنطق: المتغيرات والثوابت ذات المستوى الأعلى لها نطاق الحزمة. استخدام اسم عام يجعل من السهل استخدام القيمة الخاطئة عن طريق الخطأ في ملف مختلف.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -2810,7 +2812,7 @@ const (
 
 يجب أن تكون الأنواع المضمنة في أعلى قائمة الحقول للهيكل، ويجب أن يكون هناك سطر فارغ يفصل بين الحقول المضمنة والحقول العادية.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -2855,7 +2857,7 @@ type Client struct {
 
 ببساطة، قم بالتضمين بوعي وقصد. اختبار جيد هو "هل ستتم إضافة كل هذه الطرق/الحقول الداخلية المصدرة مباشرة إلى النوع الخارجي"؛ إذا كانت الإجابة "بعضها" أو "لا"، فلا تقم بتضمين النوع الداخلي - استخدم حقلًا بدلاً من ذلك.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -2955,7 +2957,7 @@ type Client struct {
 
 يجب استخدام إعلانات المتغيرات القصيرة (`:=`) إذا كان يتم تعيين قيمة للمتغير بشكل صريح.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -2975,7 +2977,7 @@ s := "foo"
 
 ومع ذلك، هناك حالات تكون فيها القيمة الافتراضية أوضح عند استخدام الكلمة المفتاحية `var`. [الإعلان عن شرائح فارغة](https://go.dev/wiki/CodeReviewComments#declaring-empty-slices)، على سبيل المثال.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -3013,7 +3015,7 @@ func f(list []int) {
 
 - لا ينبغي إعادة شريحة ذات طول صفر بشكل صريح. أعد `nil` بدلاً من ذلك.
 
-  <table>
+  <table dir="rtl">
   <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
   <tbody>
   <tr><td>
@@ -3037,7 +3039,7 @@ func f(list []int) {
 
 - للتحقق مما إذا كانت الشريحة فارغة، استخدم دائمًا `len(s) == 0`. لا تتحقق من `nil`.
 
-  <table>
+  <table dir="rtl">
   <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
   <tbody>
   <tr><td>
@@ -3061,7 +3063,7 @@ func f(list []int) {
 
 - القيمة الصفرية (شريحة معلنة بـ `var`) قابلة للاستخدام على الفور بدون `make()`.
 
-  <table>
+  <table dir="rtl">
   <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
   <tbody>
   <tr><td>
@@ -3102,7 +3104,7 @@ func f(list []int) {
 
 حيثما أمكن، قلل نطاق المتغيرات والثوابت. لا تقلل النطاق إذا كان يتعارض مع [تقليل التداخل](#reduce-nesting).
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -3127,7 +3129,7 @@ if err := os.WriteFile(name, data, 0644); err != nil {
 
 إذا كنت بحاجة إلى نتيجة دالة خارج جملة if، فلا يجب أن تحاول تقليل النطاق.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -3167,7 +3169,7 @@ return nil
 
 لا تحتاج الثوابت إلى أن تكون عالمية إلا إذا كانت تستخدم في وظائف أو ملفات متعددة أو جزءًا من عقد خارجي للحزمة.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -3202,7 +3204,7 @@ func Bar() {
 
 يمكن أن تضر المعلمات العارية في استدعاءات الدوال بإمكانية القراءة. أضف تعليقات بأسلوب C (`/* ... */`) لأسماء المعلمات عندما لا يكون معناها واضحًا.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -3249,7 +3251,7 @@ func printInfo(name string, region Region, status Status)
 
 يدعم Go [الحرفيات النصية الخام](https://go.dev/ref/spec#raw_string_lit)، التي يمكن أن تمتد على عدة أسطر وتتضمن علامات اقتباس. استخدم هذه لتجنب السلاسل المهروبة يدويًا والتي يصعب قراءتها بكثير.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -3273,7 +3275,7 @@ wantError := `unknown error:"test"`
 
 يجب عليك دائمًا تقريبًا تحديد أسماء الحقول عند تهيئة الهياكل. هذا الآن مفروض بواسطة [`go vet`](https://pkg.go.dev/cmd/vet).
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -3311,7 +3313,7 @@ tests := []struct{
 
 عند تهيئة الهياكل بأسماء الحقول، احذف الحقول التي لها قيم صفرية إلا إذا كانت توفر سياقًا ذا معنى. خلاف ذلك، دع Go يعين هذه القيم الصفرية تلقائيًا.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -3355,7 +3357,7 @@ tests := []struct{
 
 عندما يتم حذف جميع حقول الهيكل في الإعلان، استخدم نموذج `var` للإعلان عن الهيكل.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -3379,7 +3381,7 @@ var user User
 
 استخدم `&T{}` بدلاً من `new(T)` عند تهيئة مراجع الهياكل بحيث تكون متسقة مع تهيئة الهيكل.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -3407,7 +3409,7 @@ sptr := &T{Name: "bar"}
 
 فضّل استخدام `make(..)` للخرائط الفارغة، والخرائط المملوءة برمجياً. هذا يجعل تهيئة الخريطة مختلفة بصرياً عن الإعلان، ويسهل إضافة تلميحات الحجم لاحقاً إذا كانت متاحة.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -3450,7 +3452,7 @@ var (
 
 من ناحية أخرى، إذا كانت الخريطة تحتفظ بقائمة ثابتة من العناصر، استخدم حرفيات الخريطة لتهيئة الخريطة.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -3483,7 +3485,7 @@ m := map[T1]T2{
 
 هذا يساعد `go vet` على إجراء تحليل ثابت لسلسلة التنسيق.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -3526,7 +3528,7 @@ go vet -printfuncs=wrapf,statusf
 
 إذا كان النظام الذي يتم اختباره يحتاج إلى الاختبار مقابل *شروط متعددة* حيث تتغير أجزاء معينة من المدخلات والمخرجات، فيجب استخدام اختبار مدفوع بالجدول لتقليل التكرار وتحسين إمكانية القراءة.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -3650,7 +3652,7 @@ for _, tt := range tests {
 فمن المقبول أن يكون هناك مسار تفرع واحد لحالات النجاح مقابل الفشل
 مع حقل جدول مثل `shouldErr` لتحديد توقعات الخطأ.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
@@ -3770,7 +3772,7 @@ for _, tt := range tests {
 
 استخدم هذا النمط للوسائط الاختيارية في المنشئات وواجهات برمجة التطبيقات العامة الأخرى التي تتوقع الحاجة إلى توسيعها، خاصة إذا كان لديك بالفعل ثلاث وسائط أو أكثر في تلك الدوال.
 
-<table>
+<table dir="rtl">
 <thead><tr><th>سيء</th><th>جيد</th></tr></thead>
 <tbody>
 <tr><td>
